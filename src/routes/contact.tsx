@@ -5,7 +5,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Exotic Wood Depot" },
-      { name: "description", content: "Get in touch with Exotic Wood Depot for custom tables, slabs, and inquiries." },
+      { name: "description", content: "Get in touch with Exotic Wood Depot for custom tables, slabs, and inquiries. Visit us at 316 N Parramore Ave, Orlando, FL." },
       { property: "og:title", content: "Contact — Exotic Wood Depot" },
       { property: "og:description", content: "Get in touch with Exotic Wood Depot." },
     ],
@@ -15,6 +15,11 @@ export const Route = createFileRoute("/contact")({
 
 const reviews = [
   {
+    name: "Patricia Hinman",
+    rating: 5,
+    text: "I had a slab that I had given up on, epoxy work backfired on me. These guys worked their magic; leveling and removing overage and exposing some truly beautiful oak patterns. Price is reasonable, work was excellent, and the guys are a pleasure to work with.",
+  },
+  {
     name: "Mike R.",
     rating: 5,
     text: "Absolutely stunning table. The craftsmanship is top-notch and the wood grain is breathtaking. Highly recommend Exotic Wood Depot!",
@@ -23,11 +28,6 @@ const reviews = [
     name: "Sarah L.",
     rating: 5,
     text: "We ordered a custom Guanacaste dining table and it exceeded all expectations. Beautiful work and great communication throughout.",
-  },
-  {
-    name: "James T.",
-    rating: 5,
-    text: "The epoxy river table we got is a true masterpiece. Everyone who visits asks about it. Worth every penny!",
   },
 ];
 
@@ -57,18 +57,74 @@ function ContactPage() {
             </p>
 
             <div className="mt-6 space-y-4">
+              {/* Location */}
               <div className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground">Location</p>
-                  <p className="text-sm text-muted-foreground">316 N Parramore Ave, Orlando, FL</p>
+                  <p className="text-sm text-muted-foreground">316 N. Parramore Ave, Orlando, FL 32801</p>
                 </div>
               </div>
 
+              {/* Phone - Graham */}
               <a
-                href="https://www.facebook.com/exoticwooddepot"
+                href="tel:321-948-6665"
+                className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Graham</p>
+                  <p className="text-sm text-muted-foreground">(321) 948-6665</p>
+                </div>
+              </a>
+
+              {/* Phone - Marcus */}
+              <a
+                href="tel:352-544-9269"
+                className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Marcus</p>
+                  <p className="text-sm text-muted-foreground">(352) 544-9269</p>
+                </div>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:exoticwooddepotllc@gmail.com"
+                className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Email</p>
+                  <p className="text-sm text-muted-foreground">exoticwooddepotllc@gmail.com</p>
+                </div>
+              </a>
+
+              {/* Hours */}
+              <div className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Hours</p>
+                  <p className="text-sm text-muted-foreground">Mon–Fri: 9:30 am – 4:30 pm</p>
+                  <p className="text-sm text-muted-foreground">Saturday: 9:30 am – 2:00 pm</p>
+                </div>
+              </div>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/wooddepotllc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
@@ -82,8 +138,9 @@ function ContactPage() {
                 </div>
               </a>
 
+              {/* Instagram */}
               <a
-                href="https://www.instagram.com/exoticwooddepot"
+                href="https://www.instagram.com/exoticwooddepotllc/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
@@ -94,21 +151,6 @@ function ContactPage() {
                 <div>
                   <p className="text-sm font-semibold text-foreground">Instagram</p>
                   <p className="text-sm text-muted-foreground">Follow us on Instagram</p>
-                </div>
-              </a>
-
-              <a
-                href="https://www.exoticwooddepotllc.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-xl border border-border/50 p-4 transition-all hover:border-primary/30 hover:bg-secondary/50"
-              >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">Website</p>
-                  <p className="text-sm text-muted-foreground">exoticwooddepotllc.com</p>
                 </div>
               </a>
             </div>
@@ -149,7 +191,7 @@ function ContactPage() {
 
         <div className="mt-8 text-center">
           <a
-            href="https://www.google.com/maps/place/316+N+Parramore+Ave,+Orlando,+FL"
+            href="https://www.google.com/maps/place/316+N+Parramore+Ave,+Orlando,+FL+32801"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-border/50 bg-secondary/50 px-6 py-3 text-sm font-medium text-foreground transition-all hover:border-primary/30 hover:bg-secondary"
