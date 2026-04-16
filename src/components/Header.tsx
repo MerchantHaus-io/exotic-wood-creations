@@ -15,12 +15,12 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-white/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logo}
             alt="Exotic Wood Depot"
-            className="h-14 w-auto"
+            className="h-20 md:h-24 w-auto"
           />
         </Link>
 
