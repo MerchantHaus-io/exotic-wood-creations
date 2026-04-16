@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { tables, slabs, pastProjects } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeader } from "@/components/SectionHeader";
+import logoTree from "@/assets/logo-tree.png";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -23,7 +24,18 @@ function HomePage() {
             backgroundImage: `url(https://static.wixstatic.com/media/04833c_dd40f86d4fd74e69acdcdb57a60bd0a5f000.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/04833c_dd40f86d4fd74e69acdcdb57a60bd0a5f000.jpg)`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/60 to-background" />
+
+        {/* Elegant tree logo backdrop */}
+        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+          <img
+            src={logoTree}
+            alt=""
+            aria-hidden="true"
+            className="h-[80vh] max-h-[760px] w-auto object-contain opacity-[0.18] mix-blend-screen invert drop-shadow-[0_0_60px_oklch(0.75_0.12_70_/_0.35)]"
+          />
+        </div>
+
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">Since 2018</p>
           <h1 className="mt-4 font-display text-5xl font-bold leading-tight tracking-tight text-foreground md:text-7xl">
