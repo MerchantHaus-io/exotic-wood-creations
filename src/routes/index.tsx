@@ -4,6 +4,7 @@ import { tables, slabs, pastProjects } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeader } from "@/components/SectionHeader";
 import logoTree from "@/assets/logo-tree.png";
+import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -27,14 +28,23 @@ function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/60 to-background" />
 
         {/* Elegant tree logo backdrop */}
-        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+          transition={{
+            opacity: { duration: 2, ease: "easeOut" },
+            scale: { duration: 2, ease: "easeOut" },
+            y: { duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "loop" },
+          }}
+        >
           <img
             src={logoTree}
             alt=""
             aria-hidden="true"
             className="h-[80vh] max-h-[760px] w-auto object-contain opacity-[0.18] mix-blend-screen invert drop-shadow-[0_0_60px_oklch(0.75_0.12_70_/_0.35)]"
           />
-        </div>
+        </motion.div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">Since 2018</p>
