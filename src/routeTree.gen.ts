@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TablesRouteImport } from './routes/tables'
+import { Route as SlabsRouteImport } from './routes/slabs'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TablesRoute = TablesRouteImport.update({
+  id: '/tables',
+  path: '/tables',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SlabsRoute = SlabsRouteImport.update({
+  id: '/slabs',
+  path: '/slabs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/slabs': typeof SlabsRoute
+  '/tables': typeof TablesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/slabs': typeof SlabsRoute
+  '/tables': typeof TablesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/slabs': typeof SlabsRoute
+  '/tables': typeof TablesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/contact' | '/gallery' | '/slabs' | '/tables'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/contact' | '/gallery' | '/slabs' | '/tables'
+  id: '__root__' | '/' | '/contact' | '/gallery' | '/slabs' | '/tables'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  SlabsRoute: typeof SlabsRoute
+  TablesRoute: typeof TablesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tables': {
+      id: '/tables'
+      path: '/tables'
+      fullPath: '/tables'
+      preLoaderRoute: typeof TablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/slabs': {
+      id: '/slabs'
+      path: '/slabs'
+      fullPath: '/slabs'
+      preLoaderRoute: typeof SlabsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,16 +121,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  SlabsRoute: SlabsRoute,
+  TablesRoute: TablesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
