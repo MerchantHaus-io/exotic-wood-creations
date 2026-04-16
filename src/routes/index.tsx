@@ -131,8 +131,35 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Featured Video */}
+      <section className="border-y border-border/30 bg-card/30 py-24">
+        <div className="mx-auto max-w-5xl px-6">
+          <SectionHeader title="See Our Craft" subtitle="A glimpse into our shop and the wood we love" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative mx-auto overflow-hidden rounded-2xl border border-border/50 shadow-[0_20px_60px_-20px_oklch(0.75_0.12_70_/_0.25)]"
+          >
+            {/* Subtle gold glow frame */}
+            <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 opacity-60" />
+            <div className="relative aspect-video w-full bg-background">
+              <iframe
+                src="https://www.youtube.com/embed/i3M9WQ00mC0?rel=0"
+                title="Exotic Wood Depot — Featured Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                className="h-full w-full"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* About / CTA */}
-      <section className="border-t border-border/30 bg-card/30 py-24">
+      <section className="py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
             From Costa Rica to Your Home
