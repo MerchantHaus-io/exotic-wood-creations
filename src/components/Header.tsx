@@ -14,17 +14,14 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
           <img
             src={logo}
             alt="Exotic Wood Depot"
-            className="h-12 w-auto mix-blend-screen brightness-110 contrast-125"
+            className="h-14 w-auto"
           />
-          <span className="hidden sm:inline font-display text-xl font-bold tracking-tight text-gradient-gold">
-            Exotic Wood Depot
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
