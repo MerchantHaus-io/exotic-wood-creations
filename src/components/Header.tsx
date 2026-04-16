@@ -39,7 +39,7 @@ export function Header() {
         </nav>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-neutral-700 transition-colors hover:text-neutral-900 md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -52,14 +52,14 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden">
+        <nav className="border-t border-border/50 bg-white/95 backdrop-blur-xl md:hidden">
           <div className="flex flex-col gap-1 px-6 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                activeProps={{ className: "rounded-lg px-4 py-3 text-sm font-medium bg-secondary text-primary" }}
+                className="rounded-lg px-4 py-3 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+                activeProps={{ className: "rounded-lg px-4 py-3 text-sm font-medium bg-neutral-100 text-primary" }}
                 activeOptions={{ exact: true }}
                 onClick={() => setOpen(false)}
               >
