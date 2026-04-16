@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -16,7 +17,12 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
-          <span className="font-display text-2xl font-bold tracking-tight text-gradient-gold">
+          <img
+            src={logo}
+            alt="Exotic Wood Depot"
+            className="h-12 w-auto mix-blend-screen brightness-110 contrast-125"
+          />
+          <span className="hidden sm:inline font-display text-xl font-bold tracking-tight text-gradient-gold">
             Exotic Wood Depot
           </span>
         </Link>

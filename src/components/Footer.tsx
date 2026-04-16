@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -6,7 +7,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div>
-            <h3 className="font-display text-xl font-bold text-gradient-gold">Exotic Wood Depot</h3>
+            <img
+              src={logo}
+              alt="Exotic Wood Depot"
+              className="h-20 w-auto mix-blend-screen brightness-110 contrast-125"
+            />
+            <h3 className="mt-3 font-display text-xl font-bold text-gradient-gold">Exotic Wood Depot</h3>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Exotic Wood Depot came about during a fishing trip in Costa Rica. We came across some of the most beautiful wood we had ever seen. Started in 2018, creating some of the finest quality tables on the market.
             </p>
