@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TablesRouteImport } from './routes/tables'
 import { Route as SlabsRouteImport } from './routes/slabs'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const TablesRoute = TablesRouteImport.update({
 const SlabsRoute = SlabsRouteImport.update({
   id: '/slabs',
   path: '/slabs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/services': typeof ServicesRoute
   '/slabs': typeof SlabsRoute
   '/tables': typeof TablesRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/services': typeof ServicesRoute
   '/slabs': typeof SlabsRoute
   '/tables': typeof TablesRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
+  '/services': typeof ServicesRoute
   '/slabs': typeof SlabsRoute
   '/tables': typeof TablesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/gallery' | '/slabs' | '/tables'
+  fullPaths: '/' | '/contact' | '/gallery' | '/services' | '/slabs' | '/tables'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/gallery' | '/slabs' | '/tables'
-  id: '__root__' | '/' | '/contact' | '/gallery' | '/slabs' | '/tables'
+  to: '/' | '/contact' | '/gallery' | '/services' | '/slabs' | '/tables'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/gallery'
+    | '/services'
+    | '/slabs'
+    | '/tables'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
+  ServicesRoute: typeof ServicesRoute
   SlabsRoute: typeof SlabsRoute
   TablesRoute: typeof TablesRoute
 }
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/slabs'
       fullPath: '/slabs'
       preLoaderRoute: typeof SlabsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
+  ServicesRoute: ServicesRoute,
   SlabsRoute: SlabsRoute,
   TablesRoute: TablesRoute,
 }
