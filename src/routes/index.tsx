@@ -158,6 +158,47 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Testimonial */}
+      <section className="relative overflow-hidden py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.75_0.12_70_/_0.08),_transparent_70%)]" />
+        <motion.figure
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="relative mx-auto max-w-3xl px-6 text-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            className="mx-auto h-12 w-12 text-primary/60"
+          >
+            <path d="M7.17 6C4.32 6 2 8.32 2 11.17V18h6.83v-6.83H5.5c0-1.84 1.5-3.34 3.34-3.34V6H7.17zm10 0c-2.85 0-5.17 2.32-5.17 5.17V18h6.83v-6.83H15.5c0-1.84 1.5-3.34 3.34-3.34V6h-1.67z" />
+          </svg>
+
+          <div className="mt-6 flex justify-center gap-1 text-primary">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <svg key={i} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            ))}
+          </div>
+
+          <blockquote className="mt-8 font-display text-2xl font-medium leading-relaxed text-foreground md:text-3xl md:leading-[1.4]">
+            "I had a slab that I had given up on — epoxy work backfired on me. These guys worked their magic; leveling and removing overage and exposing some truly beautiful oak patterns. Price is reasonable, work was excellent, and the guys are a pleasure to work with."
+          </blockquote>
+
+          <div className="mx-auto mt-10 h-px w-16 bg-primary/40" />
+
+          <figcaption className="mt-6">
+            <p className="font-display text-lg font-semibold text-foreground">Patricia Hinman</p>
+            <p className="mt-1 text-sm uppercase tracking-[0.25em] text-muted-foreground">Verified Customer</p>
+          </figcaption>
+        </motion.figure>
+      </section>
+
       {/* About / CTA */}
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
