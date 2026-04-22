@@ -25,7 +25,8 @@ function HomePage() {
             backgroundImage: `url(https://static.wixstatic.com/media/04833c_dd40f86d4fd74e69acdcdb57a60bd0a5f000.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/04833c_dd40f86d4fd74e69acdcdb57a60bd0a5f000.jpg)`,
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_oklch(0.14_0.01_60_/_0.6)_70%)]" />
 
         {/* Elegant tree logo backdrop */}
         <motion.div
@@ -52,7 +53,7 @@ function HomePage() {
             Exotic Wood{" "}
             <span className="text-gradient-gold">Depot</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/85 md:text-xl [text-shadow:0_2px_20px_oklch(0.14_0.01_60_/_0.8)]">
             Handcrafted live edge tables and exotic wood slabs imported from Costa Rica. Each piece tells a unique story through natural beauty and expert craftsmanship.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
