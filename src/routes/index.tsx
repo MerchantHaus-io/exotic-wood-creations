@@ -28,22 +28,28 @@ function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_oklch(0.14_0.01_60_/_0.6)_70%)]" />
 
-        {/* Elegant tree logo backdrop */}
+        {/* Elegant tree logo backdrop — slow Ken Burns zoom */}
         <motion.div
           className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+          initial={{ opacity: 0, scale: 1, x: 0, y: 0 }}
+          animate={{
+            opacity: [0, 0.18, 0.18],
+            scale: [1, 1.08],
+            x: [0, -12],
+            y: [0, 8],
+          }}
           transition={{
-            opacity: { duration: 2, ease: "easeOut" },
-            scale: { duration: 2, ease: "easeOut" },
-            y: { duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "loop" },
+            opacity: { duration: 3, ease: "easeOut", times: [0, 0.4, 1] },
+            scale: { duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
+            x: { duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
+            y: { duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
           }}
         >
           <img
             src={logoTree}
             alt=""
             aria-hidden="true"
-            className="h-[80vh] max-h-[760px] w-auto object-contain opacity-[0.18] mix-blend-screen invert drop-shadow-[0_0_60px_oklch(0.75_0.12_70_/_0.35)]"
+            className="h-[80vh] max-h-[760px] w-auto object-contain mix-blend-screen invert drop-shadow-[0_0_60px_oklch(0.75_0.12_70_/_0.35)]"
           />
         </motion.div>
 
