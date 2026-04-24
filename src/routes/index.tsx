@@ -1,189 +1,321 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { tables, slabs, pastProjects } from "@/data/products";
-import { ProductCard } from "@/components/ProductCard";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { classes, instructors } from "@/data/classes";
+import { ClassCard } from "@/components/ClassCard";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
-import logoTree from "@/assets/logo-tree.png";
-import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const valueProps = [
+  {
+    emoji: "🎭",
+    title: "Taught by working performers",
+    body: "Every instructor has house-team cred, a writers-room credit, or both. No armchair coaches.",
+  },
+  {
+    emoji: "💻",
+    title: "Live on Zoom, every week",
+    body: "Real cohorts. Real showcase nights. No pre-recorded videos collecting dust in your queue.",
+  },
+  {
+    emoji: "🙌",
+    title: "Welcoming by design",
+    body: "First-timers, over-thinkers, and introverts are our people. There is no wrong way to try.",
+  },
+  {
+    emoji: "🎯",
+    title: "Built for real life",
+    body: "The skills transfer — presentations, parenting, dating, selling. Improv is sneaky-useful.",
+  },
+];
+
+const stats = [
+  { value: "12,000+", label: "Alumni" },
+  { value: "4.9★", label: "Avg. rating" },
+  { value: "26", label: "Countries represented" },
+  { value: "7 yrs", label: "Since 2019" },
+];
+
 function HomePage() {
-  const featuredTables = tables.filter((t) => !t.sold).slice(0, 4);
-  const featuredSlabs = slabs.slice(0, 6);
-  const featuredProjects = pastProjects.slice(0, 6);
+  const featured = classes.slice(0, 4);
+  const featuredInstructors = instructors.slice(0, 4);
 
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(https://static.wixstatic.com/media/04833c_dd40f86d4fd74e69acdcdb57a60bd0a5f000.jpg/v1/fill/w_1920,h_900,al_c,q_85,enc_avif,quality_auto/04833c_dd40f86d4fd74e69acdcdb57a60bd0a5f000.jpg)`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_oklch(0.14_0.01_60_/_0.6)_70%)]" />
-
-        {/* Elegant tree logo backdrop — slow Ken Burns zoom */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
-          initial={{ opacity: 0, scale: 1, x: 0, y: 0 }}
-          animate={{
-            opacity: [0, 0.18, 0.18],
-            scale: [1, 1.08],
-            x: [0, -12],
-            y: [0, 8],
-          }}
-          transition={{
-            opacity: { duration: 3, ease: "easeOut", times: [0, 0.4, 1] },
-            scale: { duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
-            x: { duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
-            y: { duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" },
-          }}
-        >
-          <img
-            src={logoTree}
-            alt=""
-            aria-hidden="true"
-            className="h-[80vh] max-h-[760px] w-auto object-contain mix-blend-screen invert drop-shadow-[0_0_60px_oklch(0.75_0.12_70_/_0.35)]"
-          />
-        </motion.div>
-
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">Since 2018</p>
-          <h1 className="mt-4 font-display text-5xl font-bold leading-tight tracking-tight text-foreground md:text-7xl">
-            Exotic Wood{" "}
-            <span className="text-gradient-gold">Depot</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/85 md:text-xl [text-shadow:0_2px_20px_oklch(0.14_0.01_60_/_0.8)]">
-            Handcrafted live edge tables and exotic wood slabs imported from Costa Rica. Each piece tells a unique story through natural beauty and expert craftsmanship.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to="/tables"
-              className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_4px_20px_-4px_oklch(0.75_0.12_70_/_0.4)]"
+      <section className="relative overflow-hidden border-b-2 border-ink bg-background">
+        <div className="pointer-events-none absolute inset-0 bg-confetti" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-24 md:py-32 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+          <div>
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-background px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-ink shadow-pop-sm"
             >
-              View Tables
-            </Link>
-            <Link
-              to="/slabs"
-              className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3 text-sm font-semibold text-foreground transition-all hover:border-primary/50 hover:text-primary"
+              <span className="h-2 w-2 rounded-full bg-accent" /> New cohort starts May 6
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="mt-6 font-display text-6xl font-black leading-[0.95] tracking-tight text-ink md:text-8xl"
             >
-              Browse Slabs
-            </Link>
+              Yes,{" "}
+              <span className="text-gradient-sunset">and —</span>
+              <br />
+              take the leap.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.12 }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75 md:text-xl"
+            >
+              Online improv comedy classes that are rigorous, generous, and a little weird.
+              Taught live by working performers. First class is $15, no commitment.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-10 flex flex-wrap items-center gap-4"
+            >
+              <Link
+                to="/classes"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-pop transition-transform hover:-translate-y-1"
+              >
+                Browse classes
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </Link>
+              <Link
+                to="/schedule"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-background px-8 py-4 text-base font-bold text-ink shadow-pop-sm transition-transform hover:-translate-y-1"
+              >
+                Try Friday's drop-in — $15
+              </Link>
+            </motion.div>
+
+            <dl className="mt-14 grid max-w-lg grid-cols-2 gap-6 sm:grid-cols-4">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <dt className="font-display text-3xl font-black text-ink">{s.value}</dt>
+                  <dd className="mt-1 text-xs font-bold uppercase tracking-wider text-ink/60">
+                    {s.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {/* Stacked polaroid-style cards */}
+          <div className="relative mx-auto hidden aspect-square w-full max-w-md lg:block">
+            <motion.div
+              initial={{ opacity: 0, rotate: -2, y: 20 }}
+              animate={{ opacity: 1, rotate: -6, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="absolute inset-x-8 top-4 aspect-[4/5] rounded-3xl border-2 border-ink bg-pop p-3 shadow-pop"
+            >
+              <div className="h-full w-full overflow-hidden rounded-2xl border-2 border-ink">
+                <img
+                  src="https://images.unsplash.com/photo-1522158637959-30385a09e0da?auto=format&fit=crop&w=800&q=80"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, rotate: 4, y: 20 }}
+              animate={{ opacity: 1, rotate: 3, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="absolute inset-x-0 top-20 aspect-[4/5] rounded-3xl border-2 border-ink bg-accent p-3 shadow-pop-lg"
+            >
+              <div className="h-full w-full overflow-hidden rounded-2xl border-2 border-ink">
+                <img
+                  src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?auto=format&fit=crop&w=800&q=80"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="absolute inset-x-6 bottom-6 rounded-2xl border-2 border-ink bg-background px-4 py-3 text-center font-display text-sm font-black text-ink shadow-pop-sm">
+                101 cohort · Spring '26
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="absolute -right-6 -top-2 flex h-24 w-24 items-center justify-center rounded-full border-2 border-ink bg-primary font-display text-xs font-black uppercase tracking-wider text-ink shadow-pop"
+            >
+              <span className="-rotate-12 text-center leading-tight">
+                Yes,
+                <br />
+                and!
+              </span>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Featured Tables */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionHeader title="Ready For a Home" subtitle="Finished tables available for purchase" />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredTables.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-        <div className="mt-12 text-center">
-          <Link
-            to="/tables"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
-          >
-            View All Tables
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* Featured Slabs */}
-      <section className="border-y border-border/30 bg-card/30 py-24">
+      {/* Value props */}
+      <section className="border-b-2 border-ink bg-secondary py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <SectionHeader title="Available Slabs" subtitle="Raw exotic wood slabs ready for your custom project" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredSlabs.map((product) => (
-              <ProductCard key={product.id} product={product} />
+          <SectionHeader
+            eyebrow="Why Frej"
+            title="An improv school that actually feels good to go to."
+          />
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {valueProps.map((v) => (
+              <div
+                key={v.title}
+                className="rounded-3xl border-2 border-ink bg-card p-6 shadow-pop-sm"
+              >
+                <div className="text-3xl">{v.emoji}</div>
+                <h3 className="mt-4 font-display text-xl font-black leading-tight text-ink">
+                  {v.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70">{v.body}</p>
+              </div>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <Link
-              to="/slabs"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
-            >
-              View All Slabs
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Past Projects */}
+      {/* Featured classes */}
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionHeader title="Past Projects" subtitle="A showcase of our finest work" />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <SectionHeader
+          eyebrow="This season's lineup"
+          title="Pick your first class."
+          subtitle="Every course runs live on Zoom, ends with a performance, and caps at 12 students so you actually get reps."
+        />
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+          {featured.map((c) => (
+            <ClassCard key={c.id} item={c} />
           ))}
         </div>
         <div className="mt-12 text-center">
           <Link
-            to="/gallery"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+            to="/classes"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-background px-6 py-3 text-sm font-bold text-ink shadow-pop-sm transition-transform hover:-translate-y-0.5"
           >
-            View Full Gallery
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            See all classes
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </Link>
-        </div>
-      </section>
-
-      {/* Featured Video */}
-      <section className="border-y border-border/30 bg-card/30 py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <SectionHeader title="See Our Craft" subtitle="A glimpse into our shop and the wood we love" />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative mx-auto overflow-hidden rounded-2xl border border-border/50 shadow-[0_20px_60px_-20px_oklch(0.75_0.12_70_/_0.25)]"
-          >
-            {/* Subtle gold glow frame */}
-            <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 opacity-60" />
-            <div className="relative aspect-video w-full bg-background">
-              <iframe
-                src="https://www.youtube.com/embed/i3M9WQ00mC0?rel=0"
-                title="Exotic Wood Depot — Featured Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                className="h-full w-full"
-              />
-            </div>
-          </motion.div>
         </div>
       </section>
 
       {/* Testimonials */}
       <TestimonialCarousel />
 
-      {/* About / CTA */}
+      {/* Instructors */}
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <SectionHeader
+          eyebrow="The people in the Zoom squares"
+          title="Instructors who've done the reps."
+        />
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {featuredInstructors.map((i) => (
+            <Link
+              key={i.id}
+              to="/about"
+              className="group rounded-3xl border-2 border-ink bg-card p-5 shadow-pop-sm transition-transform hover:-translate-y-1"
+            >
+              <div className="relative aspect-square overflow-hidden rounded-2xl border-2 border-ink">
+                <img
+                  src={i.image}
+                  alt={i.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <h3 className="mt-4 font-display text-lg font-black text-ink">{i.name}</h3>
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+                {i.title}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Corporate CTA */}
+      <section className="border-y-2 border-ink bg-pop text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-[1.3fr_1fr] md:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary">
+              For teams
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-black leading-tight tracking-tight md:text-5xl">
+              Improv, but make it a team offsite.
+            </h2>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              90-minute virtual workshops. Multi-day leadership intensives. A single all-hands
+              ice-breaker that actually works. Our corporate program translates the stage into
+              better listening, better meetings, and a Slack channel that doesn't go quiet.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/corporate"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-primary px-6 py-3 text-sm font-bold text-ink shadow-pop transition-transform hover:-translate-y-0.5"
+              >
+                Book a team workshop
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/80 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white hover:text-ink"
+              >
+                Talk to us
+              </Link>
+            </div>
+          </div>
+          <ul className="grid gap-3 text-sm">
+            {[
+              "Google · Team Days",
+              "Stripe · Leadership Offsite",
+              "Shopify · All-hands 2026",
+              "Notion · Manager training",
+            ].map((brand) => (
+              <li
+                key={brand}
+                className="rounded-2xl border-2 border-ink bg-white/10 px-5 py-3 font-display text-base font-semibold text-white backdrop-blur-sm"
+              >
+                {brand}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Final CTA */}
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-            From Costa Rica to Your Home
+          <h2 className="font-display text-4xl font-black leading-tight tracking-tight text-ink md:text-5xl">
+            You already have the instinct.
+            <br />
+            <span className="text-gradient-sunset">Come use it.</span>
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Exotic Wood Depot was born during a fishing trip in Costa Rica, where we discovered some of the most beautiful wood in the world. Since 2018, we've been bringing that beauty to homes across the States — creating one-of-a-kind tables that become the centerpiece of any room.
+          <p className="mx-auto mt-6 max-w-xl text-lg text-ink/70">
+            Drop in on a Friday Jam. Sign up for Improv 101. Or bring us to your team.
+            Whatever door you pick, it's one room farther out of your head.
           </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_4px_20px_-4px_oklch(0.75_0.12_70_/_0.4)]"
-          >
-            Get In Touch
-          </Link>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to="/classes"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-pop transition-transform hover:-translate-y-1"
+            >
+              Find your class
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-background px-8 py-4 text-base font-bold text-ink shadow-pop-sm transition-transform hover:-translate-y-1"
+            >
+              Get in touch
+            </Link>
+          </div>
         </div>
       </section>
     </>

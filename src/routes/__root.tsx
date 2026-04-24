@@ -8,17 +8,19 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-7xl font-bold text-gradient-gold">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h1 className="font-display text-8xl font-black leading-none text-gradient-sunset">404</h1>
+        <h2 className="mt-4 font-display text-2xl font-semibold text-ink">
+          Looks like nobody "yes, and"-ed this page into existence.
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          Let's get you back to somewhere fun.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-full border-2 border-ink bg-primary px-6 py-3 text-sm font-bold text-ink shadow-pop-sm transition-transform hover:-translate-y-0.5"
           >
-            Go home
+            Back to the stage
           </Link>
         </div>
       </div>
@@ -31,23 +33,36 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Exotic Wood Depot — Handcrafted Live Edge Tables & Slabs" },
-      { name: "description", content: "Premium exotic wood tables, live edge slabs, and custom furniture. Handcrafted from Guanacaste Parota, Monkeypod, and more. Based in The Villages, FL." },
-      { name: "author", content: "Exotic Wood Depot LLC" },
-      { property: "og:title", content: "Exotic Wood Depot — Handcrafted Live Edge Tables & Slabs" },
-      { property: "og:description", content: "Premium exotic wood tables, live edge slabs, and custom furniture. Handcrafted from Guanacaste Parota, Monkeypod, and more. Based in The Villages, FL." },
+      { title: "Frej Improv Collective — Online Improv Comedy Classes" },
+      {
+        name: "description",
+        content:
+          "Online improv comedy classes for total beginners, sketch writers, and long-form heads. Weekly drop-ins, eight-week courses, and corporate workshops — taught live on Zoom.",
+      },
+      { name: "author", content: "Frej Improv Collective" },
+      { property: "og:title", content: "Frej Improv Collective — Online Improv Comedy Classes" },
+      {
+        property: "og:description",
+        content:
+          "Yes, and — take the leap. Live online improv classes that are rigorous, generous, and a little weird.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:title", content: "Exotic Wood Depot — Handcrafted Live Edge Tables & Slabs" },
-      { name: "twitter:description", content: "Premium exotic wood tables, live edge slabs, and custom furniture. Handcrafted from Guanacaste Parota, Monkeypod, and more. Based in The Villages, FL." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1GdIcbW4b4R9GrakTvyzBxbNjS63/social-images/social-1776362811067-xocit.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1GdIcbW4b4R9GrakTvyzBxbNjS63/social-images/social-1776362811067-xocit.webp" },
+      { name: "twitter:title", content: "Frej Improv Collective" },
+      {
+        name: "twitter:description",
+        content:
+          "Live online improv comedy classes for every level. Try a $15 drop-in jam this Friday.",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -73,7 +88,7 @@ function RootComponent() {
   return (
     <>
       <Header />
-      <main className="pt-[73px]">
+      <main className="pt-[78px]">
         <Outlet />
       </main>
       <Footer />
